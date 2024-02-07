@@ -1,0 +1,11 @@
+printWidth: 80
+parser: flow
+trailingComma: all
+arrowParens: avoid
+tabWidth: 4
+overrides:
+  - files:
+      - "*.ts"
+      - "*.tsx"
+    options:
+      parser: typescript
