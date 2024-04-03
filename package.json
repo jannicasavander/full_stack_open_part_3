@@ -10,7 +10,8 @@
     "build:ui": "rm -rf dist && cd ../full_stack_open/part_2/puhelinluettelo && npm run build && cp -r dist ../../../full_stack_open_part_3",
     "deploy": "fly deploy",
     "deploy:full": "npm run build:ui && npm run deploy",
-    "logs:prod": "fly logs"
+    "logs:prod": "fly logs",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
     "nodemon": "^3.0.3"
   },
   "devDependencies": {
-    "@flydotio/dockerfile": "^0.5.2"
+    "@flydotio/dockerfile": "^0.5.2",
+    "@stylistic/eslint-plugin-js": "^1.7.0",
+    "eslint": "^8.57.0"
   }
 }

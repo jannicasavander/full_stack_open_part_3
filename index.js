@@ -9,7 +9,7 @@ app.use(express.static("dist"));
 app.use(express.json());
 app.use(cors());
 
-morgan.token("body", function (req, res) {
+morgan.token("body", function (req) {
     return JSON.stringify(req.body);
 });
 
@@ -49,7 +49,7 @@ app.get("/api/persons/:id", (request, response, next) => {
 app.delete("/api/persons/:id", (request, response, next) => {
     const id = request.params.id;
     Person.findByIdAndDelete(id)
-        .then(result => {
+        .then(() => {
             response.status(204).end();
         })
         .catch(error => next(error));
@@ -71,11 +71,9 @@ app.put("/api/persons/:id", (request, response, next) => {
             if (updatedPerson) {
                 response.json(updatedPerson);
             } else {
-                response
-                    .status(404)
-                    .send({
-                        error: "Person has already been removed from the server",
-                    });
+                response.status(404).send({
+                    error: "Person has already been removed from the server",
+                });
             }
         })
         .catch(error => next(error));
